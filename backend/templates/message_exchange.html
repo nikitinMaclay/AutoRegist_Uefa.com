@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Creation</title>
+  	<link rel="stylesheet" type="text/css" href="../static/css/admin.css">
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/pagination.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/table-sort-js/table-sort.js"></script>
+
+</head>
+<body class="for-uefa-page-body">
+    <h1>Mail Creation</h1>
+    <header class="page-header">
+      <div class="page-header__wrapper">
+        <nav class="main-nav main-nav--nojs main-nav--closed">
+          <div class="main-nav__wrapper">
+            <ul class="main-nav__list no-indents">
+              <li class="main-nav__item main-nav__item--current">
+                <a class="main-nav__link main-nav__link-index" href="/">Mail Creation</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_uefa">Mail for Uefa</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_tournament">Mail for Tournament</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_list">Mail List</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Winner Accounts</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/message_exchange">Message Exchange</a>
+              </li>
+              <li>
+                {% if current_user.is_authenticated %}
+                  <form action="{{ url_for('logout') }}" method="post">
+                      <button type="submit">Logout</button>
+                  </form>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="message-exchange-main">
+      <section class="message-exchange-creation">
+        <h2 class="message-exchange__title no-indents">Обмен сообщениями на Hetzner</h2>
+        <form class="message-exchange__form" method="post" action="/message_exchange">
+          <label for="message-exchange-input">Начиная с...</label>
+          <input type="date" class="mail-creation__form-input" name="message-exchange-input" value="{{date}}"
+                 id="message-exchange-input"><br>
+          <button type="submit" class="message-exchange__form-btn">Отправить на выполнение</button>
+        </form>
+    </main>
+</body>
+</html>

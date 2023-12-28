@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Creation</title>
+  	<link rel="stylesheet" type="text/css" href="../static/css/admin.css">
+
+</head>
+<body class="page-body">
+    <h1>Mail Creation</h1>
+    <header class="page-header">
+      <div class="page-header__wrapper">
+        <nav class="main-nav main-nav--nojs main-nav--closed">
+          <div class="main-nav__wrapper">
+            <ul class="main-nav__list no-indents">
+              <li class="main-nav__item main-nav__item--current">
+                <a class="main-nav__link main-nav__link-index" href="/">Mail Creation</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_uefa">Mail for Uefa</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_tournament">Mail for Tournament</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_list">Mail List</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Winner Accounts</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/message_exchange">Message Exchange</a>
+              </li>
+              <li>
+                {% if current_user.is_authenticated %}
+                  <form action="{{ url_for('logout') }}" method="post">
+                      <button type="submit">Logout</button>
+                  </form>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="page-main">
+      <section class="hetzner-mail-creation">
+        <h2 class="uefa-accounts__title no-indents">Создание почтовых ящиков на Hetzner</h2>
+        <form class="mail-creation__form" method="post" action="/hetzner_mail_creation">
+          <label for="hetzner_acc">Аккаунт для создания почт:</label>
+          <select id="hetzner_acc" name="hetzner_acc">
+            {% for h_acc in hetzner_accounts %}
+              <option>{{h_acc.email}}</option>
+            {% endfor %}
+          </select>
+          <label for="hetzner-count">Сколько нужно создать?</label>
+          <input type="number" class="mail-creation__form-input" name="hetzner-count" id="hetzner-count" value="5">
+          <label for="hetzner-processes-count">Сколько потоков?</label>
+          <input type="number" class="mail-creation__form-input" name="hetzner-processes-count" id="hetzner-processes-count" value="2">
+          <label for="country-select">Выберите страну:</label>
+          <input type="text" list="country-select" id="country-input" name="country-input" placeholder="Search...">
+          <datalist id="country-select">
+            {% for country in countries %}
+            <option>{{country.value}}</option>
+            {% endfor %}
+          </datalist>
+          <label for="champ_club-select">Выберите клуб из Лиги Чемпионов:</label>
+          <input type="text" list="champ_club-select" id="champ_club-input" name="champ_club-input" placeholder="Search...">
+          <datalist id="champ_club-select">
+            {% for club in champions_league_clubs %}
+            <option>{{club.name}}</option>
+            {% endfor %}
+          </datalist>
+          <label for="europe_club-select">Выберите клуб из Европы:</label>
+          <input type="text" list="europe_club-select" id="europe_club-input" name="europe_club-input" placeholder="Search...">
+          <datalist id="europe_club-select">
+            {% for club in europe_league_clubs %}
+            <option>{{club.name}}</option>
+            {% endfor %}
+          </datalist>
+          <label for="male_club-select">Выберите мужскую сборную:</label>
+          <input type="text" list="male_club-select" id="male_club-input" name="male_club-input" placeholder="Search...">
+          <datalist id="male_club-select">
+            {% for country in countries %}
+            <option>{{country.value}}</option>
+            {% endfor %}
+          </datalist>
+          <label for="female_club-select">Выберите женскую сборную:</label>
+          <input type="text" list="female_club-select" id="female_club-input" name="female_club-input" placeholder="Search...">
+          <datalist id="female_club-select">
+            {% for country in countries %}
+            <option>{{country.value}}</option>
+            {% endfor %}
+          </datalist>
+          <button type="submit" class="mail-creation__form-btn">Отправить на выполнение</button>
+        </form>
+      </section>
+      <section class="hetzner-for-management">
+        <h2 class="hetzner-for-management__title no-indents">Hetzner для управления</h2>
+        <form class="hetzner-for-management__form" method="post" action="/hetzner_for_management_creation">
+          <label for="hetzner-manage-email">Mail</label>
+          <input type="email" class="hetzner-for-management__form-email" name="hetzner-manage-email"
+                 id="hetzner-manage-email">
+          <label for="hetzner-manage-password">Password</label>
+
+          <input type="password" class="hetzner-for-management__form-password" name="hetzner-manage-password"
+                 id="hetzner-manage-password">
+          <button type="submit" class="hetzner-for-management__form-btn">Добавить</button>
+        </form>
+      </section>
+
+    </main>
+</body>
+</html>

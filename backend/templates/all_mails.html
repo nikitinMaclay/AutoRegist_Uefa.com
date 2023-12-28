@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Creation</title>
+  	<link rel="stylesheet" type="text/css" href="../static/css/admin.css">
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/pagination.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/table-sort-js/table-sort.js"></script>
+
+</head>
+<body class="for-uefa-page-body">
+    <h1>Mail Creation</h1>
+    <header class="page-header">
+      <div class="page-header__wrapper">
+        <nav class="main-nav main-nav--nojs main-nav--closed">
+          <div class="main-nav__wrapper">
+            <ul class="main-nav__list no-indents">
+              <li class="main-nav__item main-nav__item--current">
+                <a class="main-nav__link main-nav__link-index" href="/">Mail Creation</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_uefa">Mail for Uefa</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_for_tournament">Mail for Tournament</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/mail_list">Mail List</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Winner Accounts</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="/message_exchange">Message Exchange</a>
+              </li>
+              <li>
+                {% if current_user.is_authenticated %}
+                  <form action="{{ url_for('logout') }}" method="post">
+                      <button type="submit">Logout</button>
+                  </form>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="hetzner-all-accounts-main">
+      <section class="hetzner-all-accounts">
+        <h2>Все аккаунты на Hetzner</h2>
+        <input type="text" id="filterInput" placeholder="Filter by">
+        <table class="custom-table table-sort table-arrows" id="data-table">
+          <thead>
+              <tr>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Is on Uefa</th>
+                  <th>Last message date</th>
+                  <th>Last Addressee</th>
+                  <th>Message Text</th>
+                  <th>Country</th>
+                  <th>Champ Club</th>
+                  <th>Europe Club</th>
+                  <th>Male Team</th>
+                  <th>Female Team</th>
+                  <th>Is Active</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for acc in accounts %}
+              <tr>
+                  <td>{{ acc.mail }}</td>
+                  <td>{{ acc.password }}</td>
+                  <td>{{ acc.is_on_uefa }}</td>
+                  <td>{{ acc.last_message_date }}</td>
+                  <td>{{ acc.last_addressee }}</td>
+                  <td>{{ acc.message_text }}</td>
+                  <td>{{ acc.country }}</td>
+                  <td>{{ acc.champ_club }}</td>
+                  <td>{{ acc.europe_club }}</td>
+                  <td>{{ acc.male_club }}</td>
+                  <td>{{ acc.female_club }}</td>
+                  <td>{{ acc.is_active }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      <ul class="pagination" id="pagination"></ul>
+      </section>
+    </main>
+</body>
+</html>
