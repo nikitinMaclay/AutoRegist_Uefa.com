@@ -9,10 +9,12 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from flask_mysqldb import MySQL
 import bcrypt
 
+import sys
+sys.path.append("/root/uefa")
+
 from hetzner.mails_reg import creator_emails, create_driver
 from uefa.uefa_site_reg.site_reg_func import start_registration
 from hetzner.mails_reg.emails_message_exchange import message_exchange
-
 
 app = Flask(__name__)
 app.secret_key = 'mgJ5CVLv@dyfOJOg-opo5qKJ$-v2Wr'
@@ -28,6 +30,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 
+# Список Proxy адресов
 proxy_list = [["188.130.184.242", "1050"],
               ["45.86.1.58", "1050"]
               ]
@@ -252,4 +255,4 @@ def mail_for_tournament():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="185.192.246.177", port="5000")

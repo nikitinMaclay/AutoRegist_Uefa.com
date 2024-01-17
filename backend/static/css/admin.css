@@ -1,64 +1,196 @@
+body {
+    font-family: 'Roboto';
+}
+
 .no-indents {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
+button {
+    background: #000;
+    border: 0;
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background: #160aa1;
+}
+
+li {
+    margin: auto;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #160aa1;
+}
+
+header {
+    padding: 20px;
+    background: #e6eef5;
+    border-radius: 15px;
+}
+
+input,select {
+    min-height: 35px;
+    border-radius: 5px;
+    border: 1px solid #dcdbdb;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    width: -webkit-fill-available;
+    margin-top: 10px;
+}
+
+label {
+    /* margin-bottom: 10px; */
+}
+
+/* Стили для бургера */
+.burger-btn {
+    display: none; /* Скрываем кнопку на десктопной версии */
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background: #160aa1;
+    margin-bottom: 20px;
+}
+
+/* Стили для адаптивного меню */
+@media screen and (max-width: 768px) {
+    .main-nav__wrapper {
+        flex-direction: column; /* Столбцовая верстка для мобильной версии */
+        text-align: center;
+    }
+
+    .main-nav__list {
+        display: none; /* Скрываем список в обычной версии */
+    }
+
+    .burger-btn {
+        display: block; /* Показываем кнопку на мобильной версии */
+        margin-top: 10px; /* Расстояние от бургера до верха */
+    }
+
+    .main-nav--closed .main-nav__list {
+        display: none; /* Скрываем список в закрытом состоянии */
+    }
+
+    .main-nav--opened .main-nav__list {
+        display: flex; /* Показываем список в открытом состоянии */
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9f9f9; /* Цвет фона для адаптивного меню */
+        position: absolute;
+        top: 110px; /* Расстояние от верхнего края до списка */
+        width: 100%;
+        z-index: 1;
+        padding: 40px 0;
+        font-size: 20px;
+    }
+
+    .hetzner-mail-creation {
+        width: 80%;
+        padding: 10%!important;
+    }
+
+    .hetzner-for-management {
+        width: 80%;
+        padding: 10%!important;
+    }
+    .page-main {
+        margin-top: 30px!important;
+        display: block!important;
+    }
+    .form-half {
+        width: 100%!important;
+    }
+}
+
+.menu-mono {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-half {
+    width: 48%;
+    box-sizing: border-box;
+}
+
 .page-body {
-    width: 1400px;
-    margin: 0 auto 0 auto
+    width: 96%;
+    margin: 0 auto 0 auto;
+    padding: 2%;
 }
 
 .for-uefa-page-body {
-    width: 1400px;
+    width: 100%;
     margin: 0 auto 0 auto
 }
 
 .main-nav__list {
     display: flex;
     justify-content: space-around;
+    gap: 2rem;
 }
 
 .page-main {
-    margin-top: 70px;
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     margin-bottom: 100px;
+    gap:3rem;
 }
 
 .uefa-accounts-main {
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 100px;
 }
 
 .uefa-accounts {
-    width: 1400px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .hetzner-all-accounts-main {
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 100px;
 }
 
 .hetzner-all-accounts {
-    width: 1400px;
+    width: 100%;
     margin: 0 auto;
 }
 
-.hetzner-for-management__form {
-    width: 220px
+.hetzner-for-management {
+    /* width: 220px */
 }
 
 .hetzner-mail-creation {
-    width: 300px;
+    padding: 25px;
+    background: #f7f7f7;
+    border-radius: 25px;
 }
 
 .mail-creation__form {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: space-between;
-    height: 450px;
+    margin-top: 30px; */
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 30px;
 }
 
@@ -92,8 +224,9 @@
 
 .custom-table {
     border-collapse: collapse;
-    width: 1400px;
+    width: 100%;
     margin: 20px auto 0 auto;
+    font-size: 14px;
 }
 
 .custom-table th, .custom-table td {
@@ -145,6 +278,84 @@ cursor: pointer;
 
 
 .message-exchange-creation {
-    width: 1400px;
-    margin: 100px auto;
+    margin: 30px auto;
+    max-width: 370px!important;
+}
+
+.adaptive-table {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Стили для зеленого бейджика */
+.badge-success {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    color: #fff;
+    background-color: #28a745!important;
+}
+
+/* Стили для красного бейджика */
+.badge-danger {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    color: #fff;
+    background-color: #dc3545!important;
+}
+
+/* Общие стили для бейджиков (если нужно) */
+.badge {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    color: #fff;
+    background-color: #6c757d;
+}
+
+/* Стили для иконки "Скопировать" (используем FontAwesome) */
+.copy-btn::before {
+    margin-right: 5px;
+  }
+  
+  /* Стили для скрытия копированного пароля */
+  .password-copied {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    color: green;
+  }
+  
+.pass-button {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+}
+
+.td-inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
 }

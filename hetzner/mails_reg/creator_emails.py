@@ -20,7 +20,7 @@ def creator_emails(driver, count, hetzner_acc, hetzner_password,
     try:
         for _ in range(count):
             driver.get('https://konsoleh.hetzner.com/mail.php/mailbox/create')
-            WebDriverWait(driver, 8).until(
+            WebDriverWait(driver, 20).until(
                 EC.visibility_of_element_located((By.XPATH, '//form[@action="/mail.php/mailbox/create"]')))
 
             while True:

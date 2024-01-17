@@ -35,7 +35,7 @@ def driver_initialisation():
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--headless=new")
+    # options.add_argument("--headless=new")
     # profile_directory = r'%AppData%\Mozilla\Firefox\Profiles\z6l67q5o.uefa'
     # profile = webdriver.FirefoxProfile(os.path.expandvars(profile_directory))
     # options.profile = profile
@@ -49,7 +49,7 @@ def start_registration(accounts, link):
 
     for idx, account in enumerate(accounts):
         driver = driver_initialisation()
-        driver_waiting: WebDriverWait = WebDriverWait(driver, 30)
+        driver_waiting: WebDriverWait = WebDriverWait(driver, 40)
 
         driver.get(link)
 
@@ -181,7 +181,7 @@ def start_registration(accounts, link):
                     choose_country_btn.click()
                     time.sleep(0.3)
                     choose_country_btn.send_keys(account["country"])
-                    time.sleep(1)
+                    time.sleep(2)
                     select_country_li = \
                         driver_waiting.until(EC.element_to_be_clickable((By.CLASS_NAME,
                                                                          "searchable-select-list-dropdown-item")))
@@ -200,7 +200,7 @@ def start_registration(accounts, link):
                                                     '//*[@id="gigya-profile-form"]/div[1]'
                                                     '/div[3]/div/div[1]/div/div/div[1]/input')))
                     choose_champ_club_inp.send_keys(account["champ_club"])
-                    time.sleep(1)
+                    time.sleep(2)
                     select_club = \
                         driver_waiting.until(EC.element_to_be_clickable((By.CLASS_NAME,
                                                                          "idp-sayt-grid__dropdown--item")))
@@ -218,7 +218,7 @@ def start_registration(accounts, link):
                         EC.element_to_be_clickable((By.XPATH, '//*[@id="gigya-profile-form"]'
                                                               '/div[1]/div[3]/div/div[2]/div/div/div[1]/input')))
                     choose_europe_club_inp.send_keys(account["europe_club"])
-                    time.sleep(1)
+                    time.sleep(2)
                     select_club = \
                         driver_waiting.until(EC.element_to_be_clickable((By.CLASS_NAME,
                                                                          "idp-sayt-grid__dropdown--item")))
@@ -235,7 +235,7 @@ def start_registration(accounts, link):
                         EC.element_to_be_clickable((By.XPATH, '//*[@id="gigya-profile-form"]'
                                                               '/div[1]/div[3]/div/div[3]/div[2]/div/div[1]/input')))
                     choose_male_club_inp.send_keys(account["male_club"])
-                    time.sleep(1)
+                    time.sleep(2)
                     select_club = \
                         driver_waiting.until(EC.element_to_be_clickable((By.CLASS_NAME,
                                                                          "idp-sayt__dropdown--item")))
@@ -253,7 +253,7 @@ def start_registration(accounts, link):
                         EC.element_to_be_clickable((By.XPATH, '//*[@id="gigya-profile-form"]'
                                                               '/div[1]/div[3]/div/div[4]/div[2]/div/div[1]/input')))
                     choose_female_club_inp.send_keys(account["female_club"])
-                    time.sleep(1)
+                    time.sleep(2)
                     select_club = \
                         driver_waiting.until(EC.element_to_be_clickable((By.CLASS_NAME,
                                                                          "idp-sayt__dropdown--item")))
